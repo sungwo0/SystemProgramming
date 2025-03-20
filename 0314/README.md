@@ -36,7 +36,7 @@ ex) mkdir software
 
 파일 구조를 깔끔한 파일트리 형식으로 볼 때 사용
 
-''' sudo apt install tree 명령어로 설치 후 tree 명령어로 확인 가능
+" sudo apt install tree 명령어로 설치 후 tree 명령어로 확인 가능
 
 ## 위에 명령어 사용 후 화면
 
