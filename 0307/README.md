@@ -7,6 +7,6 @@
 <br>
 <h2>unbuntu 설치 방법</h2>
 <p>WSL2 이용 windows terminal에서 unbuntu 설치 후 계정 및 비밀번호 입력 후 접속</p>
-![unbuntu]("C:\Users\pc\OneDrive\Desktop\대학교\시스템\4.png")
+![Image](https://github.com/user-attachments/assets/61153847-0a60-4700-aa26-b6a456f15c3c)
 <h2>참고</h2>
 [unbuntu](https://velog.io/@pikamon/Linux-3)
