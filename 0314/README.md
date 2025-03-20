@@ -44,6 +44,6 @@ sudo apt install tree 명령어로 설치 후 tree 명령어로 확인 가능
 
 ## 참고
 
-[[Ubuntu] 파일 폴더 트리 한번에 보는 방법, tree](https://barrer.tistory.com/74)
-
 [[Rocky Linux] 15가지 리눅스 기본 명령어 정리](https://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS6390061632)
+
+[[Ubuntu] 파일 폴더 트리 한번에 보는 방법, tree](https://barrer.tistory.com/74)
