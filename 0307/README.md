@@ -11,4 +11,4 @@
 ![Image](https://github.com/user-attachments/assets/539adc61-cae6-408c-a4af-500623040306)
 <h2>참고</h2>
 
-[unbuntu](https://velog.io/@pikamon/Linux-3)
+[[Linux] Windows 10에 WSL2 우분투 설치하기](https://velog.io/@pikamon/Linux-3)
