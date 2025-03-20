@@ -8,9 +8,9 @@
 
 3. ``가상머신`` 이용 사용
 
-## unbuntu 설치 후 화면
+## ubuntu 설치 후 화면
 
-WSL2 이용 ``windows terminal``에서 unbuntu 설치 후 계정 및 비밀번호 입력 후 접속
+WSL2 이용 ``windows terminal``에서 ubuntu 설치 후 계정 및 비밀번호 입력 후 접속
 
 ![Image](https://github.com/user-attachments/assets/539adc61-cae6-408c-a4af-500623040306)
 
