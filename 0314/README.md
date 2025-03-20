@@ -14,7 +14,9 @@ ex) ./app/d.txt
 
 디렉터리를 새로 만들 때 사용
 
-사용법 : mkdir + 디렉터리 명
+사용법
+
+mkdir + 디렉터리 명
 
 ex) mkdir software
 
