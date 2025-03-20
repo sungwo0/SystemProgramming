@@ -16,9 +16,9 @@ ex) ``./app/d.txt``
 
 사용법
 
-mkdir + 디렉터리 명
+``mkdir + 디렉터리 명``
 
-ex) mkdir software
+ex) ``mkdir software``
 
 ## cat
 
@@ -26,11 +26,11 @@ ex) mkdir software
 
 사용법
 
-1. 파일을 만들 때 : cat + > + 파일명
+1. 파일을 만들 때 : ``cat + > + 파일명``
 
 내용 입력 후 crtl + d로 종료
 
-2. 파일을 읽을 때 : cat + 파일명
+2. 파일을 읽을 때 : ``cat + 파일명``
 
 ## tree
 
