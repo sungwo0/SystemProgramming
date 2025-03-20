@@ -16,4 +16,4 @@ WSL2 이용 windows terminal에서 unbuntu 설치 후 계정 및 비밀번호 �
 
 ## 참고
 
-[[Linux] Windows 10에 WSL2 우분투 설치하기](https://velog.io/@pikamon/Linux-3)
+- [[Linux] Windows 10에 WSL2 우분투 설치하기](https://velog.io/@pikamon/Linux-3)
