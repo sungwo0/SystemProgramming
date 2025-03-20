@@ -4,11 +4,11 @@
 
 1. 절대 경로 : 루트 디렉터리로부터 시작하여 경로 이름을 정확하게 적는 것
 
-ex) /home/software/app/d.txt
+ex) ``/home/software/app/d.txt``
 
 2. 상대 경로 : 현재 작업 디렉터리로부터 시작해서 경로 이름을 적는 것
 
-ex) ./app/d.txt
+ex) ``./app/d.txt``
 
 ## mkdir
 
