@@ -24,12 +24,24 @@ ex) mkdir software
 
 사용법
 
-1. 파일을 만들 때 : cat > 파일명
+1. 파일을 만들 때 : cat + > + 파일명
 
 내용 입력 후 crtl + d로 종료
 
-2. 파일을 읽을 때 : cat 파일명
+2. 파일을 읽을 때 : cat + 파일명
 
 ## tree
 
+파일 구조를 깔끔한 파일트리 형식으로 볼 때 사용
 
+sudo apt install tree 명령어로 설치 후 tree 명령어로 확인 가능
+
+## 위에 명령어 사용 후 화면
+
+![Image](https://github.com/user-attachments/assets/bab89572-c6ba-4d1d-ba3f-b4f1f3536f82)
+
+## 참고
+
+[[Ubuntu] 파일 폴더 트리 한번에 보는 방법, tree](https://barrer.tistory.com/74)
+
+[[Rocky Linux] 15가지 리눅스 기본 명령어 정리](https://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS6390061632)
