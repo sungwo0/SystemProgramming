@@ -25,6 +25,8 @@ tail > 파일의 뒷 부분 출력
 
 wc > 파일에 저장된 라인의 수, 단어의 수, 문자의 수를 출력
 
+gcc > 
+
 code > vs code와 wsl을 연동
 sudo snap install --classic code 해당 명령어로 다운 후 실행
 
@@ -34,3 +36,25 @@ scanf 이용
 
 hello.c 와 학번 이름 입력 후 출력 하는 파일 2개 업로드
 
+학번을 입력해주세요
+#include<stdio.h>
+int main()
+{
+	char name[50];
+	int number;
+
+	printf("학번을 입력해주세요 : ");
+	scanf("%d", &number);
+	printf("이름을 입력해주세요 : ");
+	scanf("%s", name);
+	printf("학번 : %d\n 이름 : %s\n", number, name);
+}
+
+hello.c
+#include<stdio.h>
+int main()
+{
+	printf("Hello C world!!!");
+
+	return 0;
+}
