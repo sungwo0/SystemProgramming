@@ -1,60 +1,42 @@
-cd 경로
+# 3주차 강의 내용
 
-/ = root
-. = self
-.. = parent
-~ = home
+# 리눅스 명령어 정리
 
+## 경로 이동 (cd)
+- `/` = root (루트 디렉터리)
+- `.` = self (현재 디렉터리)
+- `..` = parent (상위 디렉터리)
+- `~` = home (사용자의 홈 디렉터리)
 
-리눅스 > c언어로 변환
+---
 
-wild character
-* = all
-? = one
+## 와일드카드 (Wild Character)
+- `*` = 모든 파일/디렉터리 (all)
+- `?` = 한 글자만 대체 (one)
 
-rm + 파일명 + -r = > 디렉터리 삭제 
+---
 
-touch > 파일이 없을 시 내용이 빈 파일을 만들어줌
-기존 파일이 있을 시 타임스탬프 시간 변경
+## 파일 및 디렉터리 관리
+- `rm 파일명 -r` ➝ 디렉터리 삭제
 
-cat > 파일의 내용 확인
+---
 
-head > 파일의 앞 부분 출력
+## 파일 생성 및 확인
+- `touch 파일명`  
+  - 파일이 없을 경우, 빈 파일을 생성  
+  - 파일이 있을 경우, 타임스탬프 갱신  
+- `cat 파일명` ➝ 파일 내용 확인  
+- `head 파일명` ➝ 파일의 앞부분 출력  
+- `tail 파일명` ➝ 파일의 뒷부분 출력  
+- `wc 파일명` ➝ 파일의 **라인 수, 단어 수, 문자 수 출력**  
 
-tail > 파일의 뒷 부분 출력
+---
 
-wc > 파일에 저장된 라인의 수, 단어의 수, 문자의 수를 출력
+## C 언어 컴파일 (`gcc`)
+- `gcc` ➝ C 언어 컴파일러  
+- 설치 명령어:  
+  ```bash
+  sudo apt install build-essential
 
-gcc > 
-
-code > vs code와 wsl을 연동
-sudo snap install --classic code 해당 명령어로 다운 후 실행
-
-\\wsl$\ > wsl에서 작성한 파일경로(윈도우 탐색기 통해 검색)
-
-scanf 이용
-
-hello.c 와 학번 이름 입력 후 출력 하는 파일 2개 업로드
-
-학번을 입력해주세요
-#include<stdio.h>
-int main()
-{
-	char name[50];
-	int number;
-
-	printf("학번을 입력해주세요 : ");
-	scanf("%d", &number);
-	printf("이름을 입력해주세요 : ");
-	scanf("%s", name);
-	printf("학번 : %d\n 이름 : %s\n", number, name);
-}
-
-hello.c
-#include<stdio.h>
-int main()
-{
-	printf("Hello C world!!!");
-
-	return 0;
-}
+## 참고
+[[리눅스 우분투] gcc 컴파일러 설치하기 (Linux ubuntu)](https://mryeo.tistory.com/23)
