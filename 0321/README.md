@@ -30,5 +30,11 @@
   ```bash
   sudo apt install build-essential
 
+## gcc 사용 후 화면
+
+![Image](https://github.com/user-attachments/assets/7d37c00e-5315-4718-9dd1-5c2139b7366f)
+
+![Image](https://github.com/user-attachments/assets/83d1b799-9b89-455d-8642-faeced518f31)
+
 ## 참고
 [[리눅스 우분투] gcc 컴파일러 설치하기 (Linux ubuntu)](https://mryeo.tistory.com/23)
