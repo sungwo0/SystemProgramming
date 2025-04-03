@@ -11,3 +11,7 @@
 ## 3주차 강의 내용
 
 - [명령어 및 GCC](https://github.com/sungwo0/SystemProgramming/blob/main/0321/README.md)
+
+## 4주차 강의 내용
+
+- [C언어 ](https://github.com/sungwo0/SystemProgramming/blob/main/0328/README.md)
