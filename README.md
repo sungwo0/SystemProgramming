@@ -14,4 +14,4 @@
 
 ## 4주차 강의 내용
 
-- [C언어 ](https://github.com/sungwo0/SystemProgramming/blob/main/0328/README.md)
+- [C언어 핵심 개념 및 명령어](https://github.com/sungwo0/SystemProgramming/blob/main/0328/README.md)
