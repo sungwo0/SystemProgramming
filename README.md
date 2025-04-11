@@ -19,3 +19,7 @@
 ## 5주차 강의 내용
 
 - [AI관련 설명](https://github.com/sungwo0/SystemProgramming/blob/main/0404/README.md)
+
+## 6주차 강의 내용
+
+- [AI관련 설명](https://github.com/sungwo0/SystemProgramming/blob/main/0411/README.md)
