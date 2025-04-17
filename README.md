@@ -22,4 +22,4 @@
 
 ## 6주차 강의 내용
 
-- [AI관련 설명](https://github.com/sungwo0/SystemProgramming/blob/main/0411/README.md)
+- [리눅스 기본 명령어 정리(VI 편집기)](https://github.com/sungwo0/SystemProgramming/blob/main/0411/README.md)
