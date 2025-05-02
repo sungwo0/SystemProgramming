@@ -23,3 +23,11 @@
 ## 6주차 강의 내용
 
 - [기본 명령어(VI 편집기)](https://github.com/sungwo0/SystemProgramming/blob/main/0411/README.md)
+
+## 7주차 강의 내용
+
+- ### 중간고사
+
+## 8주차 강의 내용
+
+- [기본 명령어(VI 편집기)](https://github.com/sungwo0/SystemProgramming/blob/main/0411/README.md)
