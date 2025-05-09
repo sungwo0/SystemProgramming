@@ -33,3 +33,7 @@
 ## 9주차 강의 내용
 
 - [리눅스 시스템 프로그래밍 요약](https://github.com/sungwo0/SystemProgramming/blob/main/0502/README.md)
+
+## 10주차 강의 내용
+
+- [리눅스 시스템 프로그래밍 요약2](https://github.com/sungwo0/SystemProgramming/blob/main/0509/README.md)
