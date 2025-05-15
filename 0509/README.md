@@ -1,137 +1,232 @@
 # 10주차 강의 내용
 
-시스템프로그래밍05.pdf - copy.c ~
+# 📁 파일 디스크립터 복제
 
-## 파일 시스템 구조
+### 🔹 `dup()` / `dup2()` 호출
+- 기존의 파일 디스크립터를 복제한다.
+- `oldfd`와 복제된 새로운 디스크립터는 **하나의 파일을 공유**한다.
 
-- 부트 블록(Boot block)
-  - 파일 시스템 시작부에 위치하고 보통 첫 번째 섹터를 차지
-  - 부트스트랩 코드가 저장되는 블록
+#### ✅ `int dup(int oldfd);`
+- `oldfd`에 대한 복제본인 **새로운 파일 디스크립터를 생성**하여 반환한다.
+- 실패 시 `-1` 반환
 
-- 슈퍼 블록(Super block)
-  - 전체 파일 시스템에 대한 정보를 저장
-    - 총 블록 수, 사용 가능한 i-노드 개수, 사용 가능한 블록 비트 맵, 블록의 크기, 사용 중인 블록 수, 사용 가능한 블록 수 등
+#### ✅ `int dup2(int oldfd, int newfd);`
+- `oldfd`를 `newfd`에 복제하고 **복제된 새로운 파일 디스크립터를 반환**한다.
+- 실패 시 `-1` 반환
 
-- i-리스트(i-list)
-  - 각 파일을 나타내는 모든 i-노드들의 리스트
-  - 한 블록은 약 40개 정도의 i-노드를 포함
+---
 
-- 데이터 블록(Data block)
-  -  파일의 내용(데이터)을 저장하기 위한 블록들
+# 📍 파일 위치 포인터 (File Position Pointer)
 
-rom ? 
+- 파일 내에서 읽거나 쓸 위치인 **현재 파일 위치**를 가리킨다.
 
-부팅 시 rom에서 하는 작업은?
+---
 
-1. 전원 공급 후 초기화(Power-On Self Test, POST)
+# 🔀 파일 위치 포인터 이동: `lseek()`
 
-2. BIOS/UEFI 실행
+### 🔹 시스템 호출 형식
+```c
+off_t lseek(int fd, off_t offset, int whence);
+```
+- 이동에 성공하면 **현재 위치 반환**, 실패하면 `-1` 반환
 
-3. 부트 디바이스 검색 및 선택
+### ✅ 사용 예
+- `lseek(fd, 0L, SEEK_SET);` : 파일 **시작으로 이동**
+- `lseek(fd, 100L, SEEK_SET);` : 시작에서 **100바이트 위치로**
+- `lseek(fd, 0L, SEEK_END);` : **파일 끝으로 이동**
 
-4. 부트 로더 로드
+### ✅ 레코드 단위 이동
+- `lseek(fd, n * sizeof(record), SEEK_SET);` : **n+1번째 레코드** 시작 위치로 이동
+- `lseek(fd, sizeof(record), SEEK_CUR);` : **다음 레코드**로 이동
+- `lseek(fd, -sizeof(record), SEEK_CUR);` : **이전 레코드**로 이동
+- `lseek(fd, sizeof(record), SEEK_END);` : **파일 끝 이후**로 이동
 
-### i-노드(i-Node)
+---
 
-- __한 파일은 하나의 i-노드를 갖는다.__
+# 📝 레코드 저장 예시
+- 순서대로 레코드 저장
+    1. `record1` 저장
+    2. `record2` 저장
+    3. 파일 끝으로 이동 후 `record3` 저장
 
-- 파일에 대한 모든 정보를 가지고 있음
-  - 파일 타입: 일반 파일, 디렉터리, 블록 장치, 문자 장치 등
+---
+
+# 🧾 student.h 구조체
+
+- `MAX = 24`
+- `START_ID = 1401001`
+
+```c
+struct student {
+  char name[MAX];
+  int id;
+  int score;
+};
+```
+
+---
+
+# 📦 dbcreate.c 기능
+
+- **학생 정보를 입력받아 파일에 저장**
+- 파일을 `O_WRONLY | O_CREAT | O_EXCL` 모드로 열고
+- 학번을 기준으로 위치 계산 후 `write()`로 저장
+
+---
+
+# 🔍 dbquery.c 기능
+
+- **학번을 입력받아 해당 레코드를 검색/출력**
+- 파일을 `O_RDONLY` 모드로 열고
+- 위치 계산 후 `read()`로 레코드 출력
+- 학번이 존재하지 않으면 `"레코드 없음"` 출력
+
+---
+
+# ✏️ 레코드 수정 과정
+
+1. **해당 레코드를 읽음**
+2. **수정**
+3. **다시 파일 내 원래 위치에 씀**
+
+---
+
+# 🛠️ dbupdate.c 기능
+
+- **학번 입력 → 해당 학생 정보 수정**
+- 파일을 `O_RDWR` 모드로 열고
+- 위치 계산 후 `read()`로 레코드 읽음
+- 점수 수정 후 `lseek()`을 사용해 원위치로 이동
+- `write()`로 덮어쓰기
+
+## 1. 파일 시스템 구조
+
+- **파일 시스템**: 저장 장치 위에서 파일을 저장하고 관리하는 구조.
+- **디스크 구조**: 디스크는 섹터(sector) 단위로 나뉘고, 여러 섹터가 모여 블록(block)을 구성함.
+- **블록(Block)**: 데이터 저장의 최소 단위.
+- **슈퍼블록(Superblock)**: 파일 시스템 전체 구조 정보를 저장하는 블록.
+  - 파일 시스템 크기
+  - 사용된 블록 수
+  - i-node 정보 등
+
+---
+
+## 2. i-node (Index Node)
+
+- **정의**: 파일의 메타데이터를 저장하는 자료구조.
+- **i-node가 저장하는 정보**:
+  - 파일 유형
+  - 접근 권한 (Permission)
+  - 소유자 UID/GID
   - 파일 크기
-  - 사용권한
-  - 파일 소유자 및 그룹
-  - 접근 및 갱신 시간
-  - 데이터 블록에 대한 포인터(주소) 등
+  - 데이터 블록 주소 (포인터)
+  - 생성/수정/접근 시간
+- **블록 포인터의 종류**:
+  - 직접 블록 (Direct block): 실제 데이터 블록 주소
+  - 간접 블록 (Indirect block): 블록 주소를 담는 블록의 주소
+    - 단일 간접, 이중 간접, 삼중 간접 블록
 
-### 블록 포인터
+---
 
-- 데이터 블록에 대한 포인터
-  - 파일의 내용을 저장하기 위해 할당된 __데이터 블록의 주소__
+## 3. 파일 입출력 구현 (C)
 
-- 하나의 i-노드 내의 __블록 포인터__
-  - 직접 블록 포인터 10개
-  - 간접 블록 포인터 1개
-  - 이중 간접 블록 포인터 1개
+```c
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
 
-## 파일 입출력 구현
-- 파일 입출력 구현을 위한 커널 내 자료구조
-	- 파일 디스크립터 배열(Fd array)
-## 파일 입출력 구현
-- 파일 입출력 구현을 위한 커널 내 자료구조
-	- 파일 디스크립터 배열(Fd array)
-	- 열린 파일 테이블(Open File Table)
-	- 동적 i-노드 테이블(Active i-node table)
+int main() {
+    int fd = open("sample.txt", O_RDONLY);
+    if (fd < 0) {
+        perror("open");
+        return 1;
+    }
 
-## 파일 디스크립터 배열(Fd Array)
-- 프로세스 당 하나씩 갖는다.
-- 파일 디스크립터 배열
-	- 열린 파일 테이블의 엔트리를 가리킨다.
-- 파일 디스크립터
-	- 파일 디스크립터 배열의 인덱스
-	- 열린 파일을 나타내는 번호
+    char buffer[128];
+    int n = read(fd, buffer, sizeof(buffer) - 1);
+    if (n < 0) {
+        perror("read");
+        return 1;
+    }
+    buffer[n] = '\0';
+    printf("읽은 내용: %s\n", buffer);
 
-## 열린 파일 테이블(Open File Table)
-- 파일 테이블 (file table)
-	- 커널 자료구조
-	- __열려진 모든 파일 목록__
-	- 열려진 파일  파일 테이블의 항목
-- 파일 테이블 항목 (file table entry)
-	- __파일 상태__ 플래그
-		(read, write, append, sync, nonblocking,…)
-	- __파일의 현재 위치__ (current file offset)
-	- i-node에 대한 포인터
+    close(fd);
+    return 0;
+}
+```
 
-## 동적 i-노드 테이블(Active i-node Table)
-- 동적 i-노드 테이블
-	- 커널 내의 자료 구조
-	- __Open 된 파일들의 i-node를 저장하는 테이블__
-- i-노드
-	- 하드 디스크에 저장되어 있는 파일에 대한 자료구조
-	- __한 파일에 하나의 i-node__
-	- 하나의 파일에 대한 정보 저장
-		- 소유자, 크기
-		- 파일이 위치한 장치
-		- 파일 내용 디스크 블럭에 대한 포인터
-- i-node table vs. i-node
+- `open()`: 파일 열기, 파일 디스크립터 반환
+- `read()`: 파일에서 데이터를 읽음
+- `close()`: 파일 닫기
 
-## 파일 상태(file status)
-- 파일 상태
-  - 파일에 대한 모든 정보
-  - 블록수, 파일 타입, 사용 권한, 링크수, 파일 소유자의 사용자 ID,
-  - 그룹 ID, 파일 크기, 최종 수정 시간 등
-- 예
-$ ls -l hello.c
-2 -rw-r--r-- 1 chang cs 617 11월 17일 15:53 hello.c
-블록수 사용권한 링크수 사용자ID 그룹ID 파일 크기 최종 수정 시간 파일이름
-파일 타입
+---
 
-## 상태 정보 : stat()
-- 파일 하나당 하나의 i-노드가 있으며
-- i-노드 내에 파일에 대한 모든 상태 정보가 저장되어 있다.
+## 4. 파일 상태 확인 (stat, fstat)
 
-## stat 구조체
+```c
+#include <sys/stat.h>
+#include <stdio.h>
 
-## 파일 타입
+int main() {
+    struct stat st;
+    if (stat("sample.txt", &st) == -1) {
+        perror("stat");
+        return 1;
+    }
 
-##파일 사용 권한(File permissions)
-- 각 파일에 대한 권한 관리
-	- 각 파일마다 사용권한이 있다.
-	- 소유자(owner)/그룹(group)/기타(others)로 구분해서 관리한다.
-- 파일에 대한 권한
-	- 읽기 r
-	- 쓰기 w
-	- 실행 x
+    printf("파일 크기: %ld bytes\n", st.st_size);
+    printf("파일 유형: ");
+    if (S_ISREG(st.st_mode)) printf("일반 파일\n");
+    else if (S_ISDIR(st.st_mode)) printf("디렉터리\n");
 
-## 사용권한
-- read 권한이 있어야
-	- O_RDONLY O_RDWR 을 사용하여 파일을 열 수 있다
-- write 권한이 있어야
-	- O_WRONLY O_RDWR O_TRUNC 을 사용하여 파일을 열 수 있다
-- 디렉토리에 __write 권한과 execute 권한__ 이 있어야
-	- 그 디렉토리에 파일을 생성할 수 있고
-	- 그 디렉토리의 파일을 삭제할 수 있다
-	- 삭제할 때 그 파일에 대한 read write 권한은 없어도 됨
+    return 0;
+}
+```
 
-## 파일 사용 권한
+- `stat()`: 파일 경로 기반 정보 조회
+- `fstat()`: 파일 디스크립터 기반 정보 조회
+- 주요 필드:
+  - `st_size`: 파일 크기
+  - `st_mode`: 파일 유형 및 권한
 
-시스템프로그래밍07.pdf list2.c 까지지
+---
+
+## 5. 디렉터리 처리 (opendir, readdir, closedir)
+
+```c
+#include <dirent.h>
+#include <stdio.h>
+
+int main() {
+    DIR *dir = opendir(".");
+    if (!dir) {
+        perror("opendir");
+        return 1;
+    }
+
+    struct dirent *entry;
+    while ((entry = readdir(dir)) != NULL) {
+        printf("파일 이름: %s\n", entry->d_name);
+    }
+
+    closedir(dir);
+    return 0;
+}
+```
+
+- `opendir()`: 디렉터리 열기
+- `readdir()`: 디렉터리 내 파일 정보 순차적으로 읽기
+- `closedir()`: 디렉터리 닫기
+
+---
+
+## 요약
+
+| 항목 | 설명 |
+|------|------|
+| i-node | 파일의 메타데이터 저장 |
+| 블록 포인터 | 직접/간접 포인터로 파일 크기 확장 지원 |
+| open/read/close | 파일 입출력 함수 |
+| stat/fstat | 파일 상태 정보 확인 |
+| opendir/readdir | 디렉터리 탐색 함수 |
