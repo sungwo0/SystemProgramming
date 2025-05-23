@@ -41,3 +41,7 @@
 ## 11주차 강의 내용
 
 - [리눅스 시스템 프로그래밍 요약 및 파일, 레코드 잠금, 프로세스 요약](https://github.com/sungwo0/SystemProgramming/blob/main/0516/README.md)
+
+## 12주차 강의 내용
+
+- [리눅스 시스템 프로그래밍 요약 및 파일, 레코드 잠금, 프로세스 요약](https://github.com/sungwo0/SystemProgramming/blob/main/0523/README.md)
