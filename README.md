@@ -36,7 +36,7 @@
 - [리눅스 시스템 프로그래밍 요약 및 파일, 레코드 잠금, 프로세스 요약](https://github.com/sungwo0/SystemProgramming/blob/main/0516/README.md)
 
 ### ✅ 12주차
-- [프로세스 생성과 기다리기 (1)](https://github.com/sungwo0/SystemProgramming/blob/main/0523/README.md)
+- [프로세스 생성과 기다리기](https://github.com/sungwo0/SystemProgramming/blob/main/0523/README.md)
 
 ### ✅ 13주차
 - [프로세스 생성과 기다리기 (2)](https://github.com/sungwo0/SystemProgramming/blob/main/0530/README.md)
