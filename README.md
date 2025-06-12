@@ -38,9 +38,6 @@
 ### ✅ 12주차
 - [프로세스 생성과 기다리기](https://github.com/sungwo0/SystemProgramming/blob/main/0523/README.md)
 
-### ✅ 13주차
-- [프로세스 생성과 기다리기 (2)](https://github.com/sungwo0/SystemProgramming/blob/main/0530/README.md)
-
 ### ✅ 15주차
 - 기말고사
 
