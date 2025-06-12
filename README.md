@@ -21,7 +21,7 @@
 - [기본 명령어 - VI 편집기](https://github.com/sungwo0/SystemProgramming/blob/main/0411/README.md)
 
 ### ✅ 7주차
-- [기본 명령어 - VI 편집기 (계속)](https://github.com/sungwo0/SystemProgramming/blob/main/0411/README.md)
+- [프로세스 요약 및 인터넷과 서버](https://github.com/sungwo0/SystemProgramming/blob/main/0411/README.md)
 
 ### ✅ 8주차
 - 중간고사
